@@ -1,18 +1,14 @@
 from datetime import datetime, timedelta
 import yfinance as yf
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import polars as pl
 import pytz
 import plotly.graph_objects as go
 import plotly.express as px
-import data_patterns
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import argrelextrema
-import seaborn as sns
 import pandas as pd
-import matplotlib.cm as cm
-import matplotlib.dates as mdates
+
 
 
 
@@ -406,6 +402,6 @@ def analyze_daily_statistics(df, columns=['High', 'Close', 'Low', 'Volume']):
         # Print the probabilities
         print(f"\nProbability of Max and Min {column} Occurring at Each Hour:")
         print(probs[['Hour', 'Max Probability (%)', 'Min Probability (%)']].to_string(index=False))
-        
+
 if __name__ == '__main__':
     main()
