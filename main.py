@@ -5,7 +5,7 @@ import polars as pl
 import pytz
 import plotly.graph_objects as go
 import plotly.express as px
-import data_patterns as dp
+import data_patterns
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import argrelextrema
@@ -25,22 +25,7 @@ timeframe = '1d'
 def main():
     global STOCK
     df = import_data(timeframe)
-    patterns = detect_cup_and_handle(df)
-    # analyze_daily_statistics(df)
-    # print(pl.select(df['Volume']).describe())
-    # plot_volume(df, STOCK).show()
-    # patterns(df)
-
-def find_patterns(df):
-    # needs fix
-    miner = dp.PatternMiner(df)
-    df_patterns = miner.find({'name': 'equal values',
-                          'pattern': '=',
-                          'parameters': {"min_confidence": 0.5,
-                                         "min_support": 2,
-                                         "decimal": 8}})
-    res = miner.analyze(df)
-    print(res)
+    
 
 def import_data(timeframe):
     global SYMBOL, DAYS
@@ -421,5 +406,6 @@ def analyze_daily_statistics(df, columns=['High', 'Close', 'Low', 'Volume']):
         # Print the probabilities
         print(f"\nProbability of Max and Min {column} Occurring at Each Hour:")
         print(probs[['Hour', 'Max Probability (%)', 'Min Probability (%)']].to_string(index=False))
+        
 if __name__ == '__main__':
     main()
