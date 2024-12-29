@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 import yfinance as yf
 import polars as pl
 import pytz
@@ -13,24 +13,25 @@ import pandas as pd
 
 
 STOCK = 'BITCOIN-USD'
-SYMBOL = 'NVDA'
-DAYS = 366
-timeframe = '1d'
+SYMBOLS = ['NVDA', 'SPY', 'QQQ', 'IWM', 'TSLA']
+DAYS = 30
+timeframe = '1m'
+csv_path = r'C:\Users\shmue\projects\python\open_pojects\probability_of_market_movment\csvs'
+last_index = {'NVDA': None, 'SPY': None, 'QQQ': None, 'IWM': None, 'TSLA': None}
 
 
 def main():
     global STOCK
-    df = import_data(timeframe)
+    pass
+
+def import_data(SYMBOL, timeframe, DAYS=3, start_date=None, end_date=None):
     
+    if not start_date and not end_date:
+        end_date = get_exchange_time()
+        start_date = end_date - timedelta(days=DAYS)
 
-def import_data(timeframe):
-    global SYMBOL, DAYS
-
-    end_date = get_exchange_time()
-    start_date = end_date - timedelta(days=DAYS)
-
-    ticker = yf.Ticker(SYMBOL)
-    df = ticker.history(start=start_date, end=end_date, interval=timeframe)
+    
+    df = yf.download(SYMBOL, start=start_date, end=end_date, interval=timeframe)
     # Ensure the DataFrame is not empty
     if df.empty:
         raise ValueError("The dataframe is empty.")
@@ -50,7 +51,7 @@ def import_data(timeframe):
     if missing_columns:
         raise ValueError(f"Missing columns in data: {missing_columns}")
     
-    df = pl.from_pandas(df, include_index=True)
+    # df = pl.from_pandas(df, include_index=True)
     return df
 
 def analyze(df):
