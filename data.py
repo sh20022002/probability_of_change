@@ -70,7 +70,8 @@ def get_data(symbols):
         df_new.to_csv(
             csv_file,
             mode='a',                     # Append mode          
-            index_label=['Datetime']        # The index gets a column name "Datetime" in CSV
+            index_label=['Datetime'],
+            header=None        # The index gets a column name "Datetime" in CSV
         )
 
         print(f"Appended {len(df_new)} new rows for {symbol} --> {csv_file}")
