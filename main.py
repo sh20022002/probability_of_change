@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import argrelextrema
 import pandas as pd
+import prob
 
 
 
@@ -22,7 +23,9 @@ last_index = {'NVDA': None, 'SPY': None, 'QQQ': None, 'IWM': None, 'TSLA': None}
 
 def main():
     global STOCK
-    pass
+    df = import_data(SYMBOLS[1], '1d', DAYS=366)
+    gap, gap_pct = prob.find_gaps_and_return_open_gap(df)
+    print(SYMBOLS[1], 'DAY', gap, gap_pct)
 
 def import_data(SYMBOL, timeframe, DAYS=3, start_date=None, end_date=None):
     
