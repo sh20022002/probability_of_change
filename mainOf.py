@@ -29,12 +29,14 @@ def main():
 
 def import_data(SYMBOL, timeframe, DAYS=3, start_date=None, end_date=None):
     
-    if not start_date and not end_date:
+    if not start_date and not end_date and DAYS != 'max':
         end_date = get_exchange_time()
         start_date = end_date - timedelta(days=DAYS)
 
-    
-    df = yf.download(SYMBOL, start=start_date, end=end_date, interval=timeframe)
+    if DAYS == 'max':
+        df = yf.download(SYMBOL ,period='max' ,interval=timeframe)
+    else:    
+        df = yf.download(SYMBOL, start=start_date, end=end_date, interval=timeframe)
     # Ensure the DataFrame is not empty
     if df.empty:
         raise ValueError("The dataframe is empty.")
