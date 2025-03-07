@@ -1,0 +1,28 @@
+2025-03-06 15:52:20,719 - ERROR - 
+1 Failed download:
+2025-03-06 15:52:20,720 - ERROR - ['SPY']: JSONDecodeError('Expecting value: line 1 column 1 (char 0)')
+2025-03-06 15:52:20,724 - ERROR - Data Error for SPY: No data fetched for SPY.
+2025-03-06 15:53:57,663 - ERROR - Unexpected Error for SPY: 'module' object is not callable
+2025-03-06 15:54:23,671 - ERROR - $SPY: possibly delisted; no price data found  (period=5d)
+2025-03-06 15:54:23,671 - ERROR - Data Error for SPY: No data fetched for SPY.
+2025-03-06 17:52:45,836 - ERROR - $SPY: possibly delisted; no price data found  (period=5d)
+2025-03-06 17:52:45,836 - ERROR - Data Error for SPY: No data fetched for SPY.
+2025-03-06 21:07:07,126 - ERROR - $SPY: possibly delisted; no price data found  (period=5d)
+2025-03-06 21:07:07,126 - ERROR - Data Error for SPY: No data fetched for SPY.
+2025-03-06 21:08:52,513 - ERROR - 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v10/finance/quoteSummary/SPY?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=SPY&crumb=Edge%3A+Too+Many+Requests
+2025-03-06 21:27:11,326 - ERROR - 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v10/finance/quoteSummary/SPY?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=SPY&crumb=Edge%3A+Too+Many+Requests
+2025-03-06 21:27:30,178 - ERROR - 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v10/finance/quoteSummary/SPY?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=SPY&crumb=Edge%3A+Too+Many+Requests
+2025-03-06 21:28:30,079 - ERROR - $SPY: possibly delisted; no price data found  (period=5d)
+2025-03-06 21:28:30,080 - ERROR - Data Error for SPY: No data fetched for SPY.
+2025-03-06 21:39:56,275 - ERROR - 
+1 Failed download:
+2025-03-06 21:39:56,275 - ERROR - ['SPY']: JSONDecodeError('Expecting value: line 1 column 1 (char 0)')
+2025-03-06 21:39:56,314 - ERROR - Data Error for SPY: No data fetched for SPY.
+2025-03-06 23:33:25,827 - ERROR - 
+1 Failed download:
+2025-03-06 23:33:25,828 - ERROR - ['SPY']: JSONDecodeError('Expecting value: line 1 column 1 (char 0)')
+2025-03-06 23:33:25,832 - ERROR - Data Error for SPY: No data fetched for SPY.
+2025-03-06 23:34:27,495 - ERROR - 
+1 Failed download:
+2025-03-06 23:34:27,495 - ERROR - ['SPY']: JSONDecodeError('Expecting value: line 1 column 1 (char 0)')
+2025-03-06 23:34:27,499 - ERROR - Data Error for SPY: No data fetched for SPY.
