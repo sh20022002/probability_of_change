@@ -110,7 +110,52 @@ def sector_covariance(sector_a: str, sector_b: str, lookback_days: int = 180) ->
     
     return long_cov, recent_cov ,lookback_days
 
-    
+
+def random_period_corr(ticker_df: pd.DataFrame,
+                       benchmark_df: pd.DataFrame,
+                       window_days: int = 5,
+                       n_samples: int = 100,
+                       seed: int = None) -> float:
+    """
+    Compute the average Pearson correlation between two return series 
+    across random sub‑windows.
+
+    Parameters
+    ----------
+    ticker_df : pd.DataFrame
+        DataFrame of price data for the first asset (must have datetime index)
+    benchmark_df : pd.DataFrame
+        DataFrame of price data for the second asset (must have datetime index)
+    window_days : int
+        Number of trading days per random window
+    n_samples : int
+        Number of random windows to sample
+    seed : int | None
+        Random seed for reproducibility
+
+    Returns
+    -------
+    float
+        Mean correlation across all sampled windows
+    """
+    np.random.seed(seed)
+
+    # Align on common dates and compute daily returns
+    df = pd.concat([ticker_df['Close'], benchmark_df['Close']], axis=1).dropna()
+    returns = df.pct_change().dropna()
+
+    total_days = len(returns)
+    if window_days >= total_days:
+        raise ValueError(f"window_days ({window_days}) must be less than total days ({total_days}).")
+
+    corrs = []
+    for _ in range(n_samples):
+        start = np.random.randint(0, total_days - window_days)
+        window = returns.iloc[start:start + window_days]
+        corrs.append(window.corr().iloc[0, 1])
+
+    return float(np.mean(corrs))
+
 # ------------------------------------------------------------
 tickers = ['SEDG']
 
