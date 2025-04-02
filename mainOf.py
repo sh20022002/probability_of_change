@@ -17,7 +17,7 @@ STOCK = 'BITCOIN-USD'
 SYMBOLS = ['NVDA', 'SPY', 'QQQ', 'IWM', 'TSLA']
 DAYS = 30
 timeframe = '1m'
-csv_path = r'C:\Users\shmue\projects\python\open_pojects\probability_of_market_movment\csvs'
+csv_path = r".\csvs"
 last_index = {'NVDA': None, 'SPY': None, 'QQQ': None, 'IWM': None, 'TSLA': None}
 
 
